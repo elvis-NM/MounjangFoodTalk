@@ -1,0 +1,33 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using AutoMapper;
+
+namespace MounjangFoodTalk.ServiceLayer
+{
+    public static class MapperExtensions
+    {
+        public static void ignoreUnmappedProperties(TypeMap map, IMappingExpression expr)
+        {
+            foreach (string propName in map.GetUnmappedPropertyNames())
+            {
+                if (map.SourceType.GetProperty(propName) != null)
+                {
+                    expr.ForMember(propName, opt => opt.Ignore());
+                }
+                if (map.DestinationType.GetProperty(propName) != null)
+                {
+                    expr.ForMember(propName, opt => opt.Ignore());
+                }
+            }
+        }
+
+        public static void ignoreUnmapped(this IProfileExpression profile)
+        {
+            profile.ForAllMaps(ignoreUnmappedProperties);
+        }
+    }
+}
+

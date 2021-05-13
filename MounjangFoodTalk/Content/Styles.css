@@ -1,0 +1,25 @@
+﻿.navbar {
+    background-color: cornflowerblue;
+}
+
+
+#active {
+    color: yellow !important;
+}
+
+.navbar a:link, .navbar a:visited {
+    color: white !important;
+}
+
+.navbar a:hover {
+    color: #0dedd1 !important;
+    text-decoration: underline;
+}
+
+.dropdown-menu a:hover {
+    color: black !important;
+}
+
+.hidden {
+    display: none;
+}
